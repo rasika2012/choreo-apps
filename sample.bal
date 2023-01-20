@@ -12,6 +12,7 @@ service / on new http:Listener(8090) {
         http:Client httpEp = check new (url = "https://reqres.in/api/users?page=2");
         record {} getResponse = check httpEp->get(path = "");
         log:printDebug(getResponse.toBalString());
+        log:printInfo("tttt");
         Greeting greetingMessage = {"from": "Choreo", "to": name, "message": "Welcome to Choreo!"};
         return greetingMessage;
     }
