@@ -9,7 +9,7 @@ type Greeting record {
 
 service / on new http:Listener(8090) {
     resource function get .(string name) returns Greeting|error {
-        http:Client httpEp = check new (url = "https://reqres.in/api/users?page=2");
+        http:Client httpEp = check new (url = "http://reqres.in/api/users?page=2");
         record {} getResponse = check httpEp->get(path = "");
         log:printDebug(getResponse.toBalString());
         log:printInfo("tttt");
