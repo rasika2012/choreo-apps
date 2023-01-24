@@ -1,0 +1,12 @@
+[build-options]
+  observabilityIncluded = true
+
+[package]
+  distribution = "2201.0.1"
+  export = ["worldbank_data_to_covid19_statistics"]
+  icon = "docs/icon.png"
+  keywords = ["Type/RestApi","Category/Service","Internal/http"]
+  name = "worldbank_data_to_covid19_statistics"
+  org = "rasikamaduranga"
+  version = "1.1.0"
+
