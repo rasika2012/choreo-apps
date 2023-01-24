@@ -1,3 +1,4 @@
+import ballerinax/worldbank;
 import ballerina/log;
 import ballerina/http;
 
@@ -9,6 +10,10 @@ type Greeting record {
 
 service / on new http:Listener(8090) {
     resource function get .(string name) returns Greeting|error {
+        worldbank:Client worldbankEp = check new ();
+
+        worldbank:IndicatorInformation[] getPopulationResponse = check worldbankEp->getPopulation();
+        log:printInfo(getPopulationResponse.toBalString());
         http:Client httpEp = check new (url = "http://reqres.in/api/users?page=2");
         record {} getResponse = check httpEp->get(path = "");
         http:Client httpEp2 = check new (url = "http://google.com/api/users?page=2");
