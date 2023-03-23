@@ -1,4 +1,3 @@
-import ballerinax/worldbank;
 import ballerina/log;
 import ballerina/http;
 
