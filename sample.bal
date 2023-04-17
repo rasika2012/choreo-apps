@@ -9,7 +9,6 @@ type Greeting record {
 
 service / on new http:Listener(8090) {
 
-    @observe:Observable {name: "hello"}
     isolated function sayHello() {
         log:printInfo("hello");
     }
