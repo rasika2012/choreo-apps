@@ -1,5 +1,3 @@
-import ballerinax/worldbank;
-import ballerina/observe;
 import ballerina/log;
 import ballerina/http;
 
@@ -17,17 +15,13 @@ service / on new http:Listener(8090) {
     }
 
     resource function get .(string name) returns Greeting|error {
-        worldbank:Client worldbankEp = check new ();
-        sayHello()
-        worldbank:IndicatorInformation[] getPopulationResponse = check worldbankEp->getPopulation();
-        log:printInfo(getPopulationResponse.toBalString());
-        http:Client httpEp = check new (url = "http://reqres.in/api/users?page=2");
-        record {} getResponse = check httpEp->get(path = "");
-        http:Client httpEp2 = check new (url = "http://google.com/api/users?page=2");
-        record {} getResponse2 = check httpEp2->get(path = "");
-        log:printDebug(getResponse.toBalString());
-        log:printDebug(getResponse2.toBalString());
         log:printInfo("tttt");
+        Greeting greetingMessage = {"from": "Choreo", "to": name, "message": "Welcome to Choreo!"};
+        return greetingMessage;
+    }
+    resource function get ./hello/(string name) returns Greeting|error {
+        log:printInfo("tttt");
+        sayHello();
         Greeting greetingMessage = {"from": "Choreo", "to": name, "message": "Welcome to Choreo!"};
         return greetingMessage;
     }
