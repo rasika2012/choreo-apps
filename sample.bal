@@ -1,5 +1,5 @@
-import ballerina/log;
 import ballerina/http;
+import ballerina/log;
 
 type Greeting record {
     string 'from;
@@ -7,20 +7,16 @@ type Greeting record {
     string message;
 };
 
-service / on new http:Listener(8090) {
 
-    isolated function sayHello() {
-        log:printInfo("hello");
-    }
+function Hello() returns error? {
+    log:printDebug("Hello");
+}
+
+service / on new http:Listener(8090) {
 
     resource function get .(string name) returns Greeting|error {
         log:printInfo("tttt");
-        Greeting greetingMessage = {"from": "Choreo", "to": name, "message": "Welcome to Choreo!"};
-        return greetingMessage;
-    }
-    resource function get ./hello/(string name) returns Greeting|error {
-        log:printInfo("tttt");
-        sayHello();
+        Hello();
         Greeting greetingMessage = {"from": "Choreo", "to": name, "message": "Welcome to Choreo!"};
         return greetingMessage;
     }
