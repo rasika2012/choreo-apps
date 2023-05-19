@@ -1,6 +1,7 @@
 import ballerinax/worldbank;
 import ballerinax/covid19;
 import ballerina/http;
+import ballerina/log;
 
 type Stats record {|
     string country;
@@ -9,6 +10,7 @@ type Stats record {|
 
 service / on new http:Listener(8090) {
     isolated resource function get stats/[string shortCountryName]() returns Stats|error {
+        log:printInfo("tttt");
         covid19:Client covid19Client = check new ();
         covid19:CovidCountry statusByCountry = check covid19Client->getStatusByCountry(shortCountryName);
         decimal totalCases = statusByCountry.cases;
