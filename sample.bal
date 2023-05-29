@@ -18,7 +18,10 @@ service / on new http:Listener(8090) {
         int i = 0;
         while (i < 10) {
             i = i + 1;
-            log:printInfo("tttt", i = i);
+            log:printInfo("fff", i = i);
+            if(i === 3){
+                  log:printInfo("ddd", i = i);
+            }
         }
         Greeting greetingMessage = {"from": "Choreo", "to": name, "message": "Welcome to Choreo!"};
         return greetingMessage;
