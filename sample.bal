@@ -21,6 +21,8 @@ service / on new http:Listener(8090) {
             log:printInfo("fff", i = i);
             if(i === 3){
                   log:printInfo("ddd", i = i);
+            } else {
+                log:printInfo("ggg", i = i);
             }
         }
         Greeting greetingMessage = {"from": "Choreo", "to": name, "message": "Welcome to Choreo!"};
