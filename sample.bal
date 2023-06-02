@@ -1,4 +1,3 @@
-import ballerina/http;
 import ballerina/log;
 
 type Greeting record {
@@ -7,25 +6,11 @@ type Greeting record {
     string message;
 };
 
-function Hello() returns error? {
+function hello() returns error? {
     log:printDebug("Hello");
 }
 
-service / on new http:Listener(8090) {
-
-    resource function get .(string name) returns Greeting|error {
-        log:printInfo("tttt");
-        int i = 0;
-        while (i < 10) {
-            i = i + 1;
-            log:printInfo("fff", i = i);
-            if (name === "LK") {
-                log:printInfo("ddd", i = i);
-            } else {
-                log:printInfo("ggg", i = i);
-            }
-        }
-        Greeting greetingMessage = {"from": "Choreo", "to": name, "message": "Welcome to Choreo!"};
-        return greetingMessage;
-    }
+public function main() returns error? {
+    var e = hello();
+    log:printError("Err", e = check e);
 }
