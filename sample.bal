@@ -8,21 +8,22 @@ type Greeting record {
 };
 
 function Hello() returns error? {
-    log:printDebug("Hello");
+    log:printDebug("Done");
 }
 
 service / on new http:Listener(8090) {
 
     resource function get .(string name) returns Greeting|error {
-        log:printInfo("tttt");
+        log:printInfo("Request Recieved:");
         int i = 0;
         while (i < 10) {
             i = i + 1;
-            log:printInfo("fff", i = i);
             if (name === "LK") {
-                log:printInfo("ddd", i = i);
+                log:printError("Error", i = i);
+            } else if (name === "IND") {
+                log:printDebug("Something went wrong: Greething message sent", i = i);
             } else {
-                log:printInfo("ggg", i = i);
+                log:printInfo("Succeeded: Greething message sent", i = i);
             }
         }
         Greeting greetingMessage = {"from": "Choreo", "to": name, "message": "Welcome to Choreo!"};
