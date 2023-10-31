@@ -16,7 +16,7 @@ service / on new http:Listener(8090) {
     resource function get .(string name) returns Greeting|error {
         log:printInfo("Request Recieved: For E-mail Sevice");
         int i = 0;
-        while (i < 2) {
+        while (i < 2000) {
             i = i + 1;
             if (name === "LK") {
                 log:printError("Failed to resolve E-mail", id = i);
